@@ -18,7 +18,7 @@ class ProductList extends React.Component {
     fetch('/api/products')
       .then(res => res.json())
       .then(json => {
-
+        console.log(json);
         this.setState({ products: json });
       });
 
@@ -26,18 +26,20 @@ class ProductList extends React.Component {
 
   render() {
     return (
+
       <div className='container'>
-        <div className='row'>
+        <div className='row justify-content-around'>
           {
             this.state.products.map(product => {
               return (
-                <ProductListItem key={this.state.products.productId} source={this.state.products.image} alt={this.state.products.shortDescription} title={this.state.products.name} price={this.state.products.price} text={this.state.products.shortDescription}></ProductListItem>
+                <ProductListItem key={product.productId} source={product.image} alt={product.shortDescription} title={product.name} price={product.price} text={product.shortDescription}></ProductListItem>
               );
             })
 
           }
         </div>
       </div>
+
     );
   }
 }
