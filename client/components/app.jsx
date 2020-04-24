@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+import ProductList from './product-list';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -18,17 +19,19 @@ export default class App extends React.Component {
       .finally(() => this.setState({ isLoading: false }));
   }
 
-  getAllProducts() {
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({ message: json });
-      });
-  }
-
   render() {
-    return this.state.isLoading
-      ? <h1>Testing connections...</h1>
-      : <h1>{this.state.message}</h1>;
+    return (
+      <div className='container'>
+        {this.state.isLoading
+          ? <h1>Testing connections...</h1>
+          : <h1>{this.state.message}</h1>}
+        <div className='row'>
+          <Header text={'$ Wicked Sales'}></Header>
+        </div>
+        <div className='row'>
+          <ProductList></ProductList>
+        </div>
+      </div>
+    );
   }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 
 function Header(props) {
   return (
-    <div className=' bg-secondary d-flex mt-1 mr-1 justify-content-between'>
-      <h1 className="mb-4">{props.text}</h1>
+    <div className='container text-white bg-secondary '>
+      <p className="pt-2 pb-2 pl-2">{props.text}</p>
     </div>
   );
 }
