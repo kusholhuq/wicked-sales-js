@@ -19,7 +19,6 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// feature 1
 app.get('/api/products', (req, res, next) => {
   const sql = `
   select "productId","name", "price","image","shortDescription"

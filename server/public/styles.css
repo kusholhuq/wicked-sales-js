@@ -1,0 +1,9 @@
+.image-size{
+  object-fit: contain;
+  height: 30vh;
+
+}
+
+.col-3-5{
+  width: 30%;
+}
