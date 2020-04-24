@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './header';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,14 @@ export default class App extends React.Component {
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+  }
+
+  getAllProducts() {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ message: json });
+      });
   }
 
   render() {
