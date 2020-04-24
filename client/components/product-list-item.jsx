@@ -9,10 +9,6 @@ function ProductListItem(props) {
   for (let i = 0; i < priceArray.length; i++) {
     result += priceArray[i];
   }
-  // conver to string
-  // convert to array
-  // splice a . 2 from the end
-  // splice a $ at the start
 
   return (
     <div className='card col-3-5 m-2 mt-3'>
