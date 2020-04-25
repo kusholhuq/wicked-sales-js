@@ -9,11 +9,11 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.params.productId);
+
     fetch(`/api/products/${this.props.params.productId}`)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
+
         this.setState({
           product: json
         });
@@ -39,14 +39,14 @@ class ProductDetails extends React.Component {
             <div className='card'>
               <p onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
               <div className='card-body d-flex'>
-                <img src={this.state.product.image} className='col-5' />
+                <img src={this.state.product.image} className='col-5 image-size-detail' />
                 <div className='ml-2 col-5'>
                   <h5 className='card-title'>{this.state.product.name}</h5>
                   <p className='text-grey'>{result}</p>
                   <p className='card-text'>{this.state.product.shortDescription}</p>
                 </div>
               </div>
-              <p className='card-text'>{this.state.product.longDescription}</p>
+              <p className='card-text m-3'>{this.state.product.longDescription}</p>
 
             </div>
           </div>
