@@ -32,7 +32,9 @@ class ProductList extends React.Component {
           {
             this.state.products.map(product => {
               return (
-                <ProductListItem onClick={function () { this.props.setView('details', { productId: product.productId }); }} key={product.productId} source={product.image} alt={product.shortDescription} title={product.name} price={product.price} text={product.shortDescription}></ProductListItem>
+                <ProductListItem setView={ () => { this.props.setView('details', { productId: product.productId }); }}
+                  key={product.productId} source={product.image} alt={product.shortDescription} title={product.name}
+                  price={product.price} text={product.shortDescription}></ProductListItem>
               );
             })
 

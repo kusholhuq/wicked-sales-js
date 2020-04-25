@@ -9,6 +9,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.params.productId);
     fetch(`/api/products/${this.props.params.productId}`)
       .then(res => res.json())
       .then(json => {
@@ -20,32 +21,38 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    const priceString = this.state.product.price + '';
-    const priceArray = priceString.split('');
-    priceArray.splice(priceArray.length - 2, 0, '.');
-    priceArray.splice(0, 0, '$');
-    let result = '';
-    for (let i = 0; i < priceArray.length; i++) {
-      result += priceArray[i];
-    }
 
-    return (
-      <div className='container'>
-        <div className='row'>
-          <div className='card'>
-            <div className='card-body'>
-              <img src={this.state.product.image} />
-              <div>
-                <h5 className='card-title'>{this.state.product.name}</h5>
-                <p className='text-grey'>{result}</p>
+    if (this.state.product === null) {
+      return null;
+    } else {
+      const priceString = this.state.product.price + '';
+      const priceArray = priceString.split('');
+      priceArray.splice(priceArray.length - 2, 0, '.');
+      priceArray.splice(0, 0, '$');
+      let result = '';
+      for (let i = 0; i < priceArray.length; i++) {
+        result += priceArray[i];
+      }
+      return (
+        <div className='container'>
+          <div className='row'>
+            <div className='card'>
+              <p onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
+              <div className='card-body d-flex'>
+                <img src={this.state.product.image} className='col-5' />
+                <div className='ml-2 col-5'>
+                  <h5 className='card-title'>{this.state.product.name}</h5>
+                  <p className='text-grey'>{result}</p>
+                  <p className='card-text'>{this.state.product.shortDescription}</p>
+                </div>
               </div>
-            </div>
-            <p className='card-text'>{this.state.product.longDescription}</p>
+              <p className='card-text'>{this.state.product.longDescription}</p>
 
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

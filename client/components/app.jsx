@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
-import ProductDetails from './product-details'
+import ProductDetails from './product-details';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,22 +27,20 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className='container'>
-        <div className='row'>
-          <Header text={'$ Wicked Sales'}></Header>
+    if (this.state.view.name === 'catalog') {
+      return (
+        <div className='container'>
+          <div className='row'><Header text={'$ Wicked Sales'}></Header></div>
+          <div className='row'><ProductList setView={this.setView}></ProductList></div>
         </div>
-        <div className='row'>
-          {
-            if (this.state.view.name==='catalog'){
-              return (<ProductList setView={this.setView}></ProductList>)
-            }else if(this.state.view.name==='details'){
-              return (<ProductDetails setView={this.setView} params={this.state.view.params}></ProductDetails>)
-            }
-
-          }
+      );
+    } else if (this.state.view.name === 'details') {
+      return (
+        <div className='container'>
+          <div className='row'><Header text={'$ Wicked Sales'}></Header></div>
+          <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params}></ProductDetails></div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
