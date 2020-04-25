@@ -11,7 +11,7 @@ function ProductListItem(props) {
   }
 
   return (
-    <div className='card col-3-5 m-2 mt-3'>
+    <div onClick={props.setView} className='card col-3-5 m-2 mt-3'>
       <img src={props.source} alt={props.alt} className=' card-img-top image-size'/>
       <div className='card-body'>
         <h5 className='card-title'>{props.title}</h5>

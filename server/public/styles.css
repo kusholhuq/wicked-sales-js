@@ -7,3 +7,8 @@
 .col-3-5{
   width: 30%;
 }
+.image-size-detail{
+  object-fit: contain;
+  height: 40vh;
+
+}
