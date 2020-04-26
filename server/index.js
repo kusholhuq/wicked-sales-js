@@ -52,6 +52,110 @@ app.get('/api/products/:productId', (req, res, next) => {
     });
 });
 
+app.get('/api/cart', (req, res, next) => {
+  if (!req.session.cartId) {
+    res.json([]);
+  } else {
+
+    const params = [req.session.cartId];
+    const sql = `
+  select "c"."cartItemId",
+       "c"."price",
+       "p"."productId",
+       "p"."image",
+       "p"."name",
+       "p"."shortDescription"
+  from "cartItems" as "c"
+  join "products" as "p" using ("productId")
+ where "c"."cartId" = $1;
+  `;
+    db.query(sql, params)
+      .then(result => {
+        const itemsArray = result.rows;
+        res.status(200).json(itemsArray);
+      })
+      .catch(err => next(err));
+  }
+});
+
+app.post('/api/cart', (req, res, next) => {
+
+  if (!parseInt(req.body.productId, 10)) {
+    return res.status(400).json({
+      error: 'productId must be a positive integer'
+    });
+  }
+  const params = [req.body.productId];
+  const sql = `
+  select "price"
+  from "products"
+  where "productId" = $1;`;
+
+  db.query(sql, params)
+    .then(result => {
+      const price = result.rows[0];
+
+      if (!price) {
+        throw new ClientError(`Cannot find price of product with productId: ${req.body.productId}`, 400);
+      }
+      if (req.session.cartId) {
+
+        return ({ cartId: req.session.cartId, price: price.price });
+      }
+      const sql2 = `
+      insert into "carts" ("cartId", "createdAt")
+      values (default, default)
+      returning "cartId";
+      `;
+      return (db.query(sql2)
+        .then(answer => {
+
+          return ({ cartId: answer.rows[0].cartId, price: price.price });
+        }));
+    })
+    .then(result2 => {
+
+      req.session.cartId = result2.cartId;
+      const params = [result2.cartId, parseInt(req.body.productId), result2.price];
+      const sql3 = `
+      insert into "cartItems" ("cartId", "productId", "price")
+      values ($1, $2, $3)
+      returning "cartItemId";
+      `;
+
+      return (db.query(sql3, params)
+        .then(answer2 => {
+
+          return ({ cartItemId: answer2.rows[0].cartItemId });
+        }));
+
+    })
+    .then(result3 => {
+
+      const params = [result3.cartItemId];
+      const sql4 = `
+      select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1;
+      `;
+      return (
+        db.query(sql4, params)
+          .then(result4 => {
+
+            res.status(201).json(result4.rows[0]);
+          })
+      );
+    })
+    .catch(err => next(err));
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
