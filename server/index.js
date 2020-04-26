@@ -93,30 +93,49 @@ app.post('/api/cart', (req, res, next) => {
       return (db.query(sql2)
         .then(answer => {
           // console.log('answer:', answer, answer.rows[0]);
-          res.json({ cartId: answer.rows[0].cartId, price: price.price });
+          // res.json({ cartId: answer.rows[0].cartId, price: price.price });
           return ({ cartId: answer.rows[0].cartId, price: price.price });
         }));
     })
     .then(result2 => {
       console.log('result2: ', result2);
       req.session.cartId = result2.cartId;
+      const params = [result2.cartId, parseInt(req.body.productId), result2.price];
       const sql3 = `
       insert into "cartItems" ("cartId", "productId", "price")
       values ($1, $2, $3)
       returning "cartItemId";
       `;
-      const params = [result2.cartId, parseInt(req.body.productId), result2.price];
       console.log('params', params);
       return (db.query(sql3, params)
         .then(answer2 => {
-          console.log('answer2', result.rows[0]);
+          console.log('answer2', answer2.rows[0]);
           // res.json({ cartItemId: answer2.rows[0] });
-          // return ({ cartItemId: answer2.rows[0] });
+          return ({ cartItemId: answer2.rows[0].cartItemId });
         }));
 
     })
     .then(result3 => {
       console.log('result3:', result3);
+      const params = [result3.cartItemId];
+      const sql4 = `
+      select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1;
+      `;
+      return (
+        db.query(sql4, params)
+          .then(result4 => {
+            console.log('result4: ', result4.rows[0]);
+            res.status(201).json(result4.rows[0]);
+          })
+      );
     })
     .catch();
 
