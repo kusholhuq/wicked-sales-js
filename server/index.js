@@ -53,6 +53,9 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
+  // if(!req.session.cartId){
+  //   res.json([])
+  // }
   const sql = `
   select *
   from "cartItems";
@@ -141,7 +144,7 @@ app.post('/api/cart', (req, res, next) => {
           })
       );
     })
-    .catch();
+    .catch(err => next(err));
 
 });
 
