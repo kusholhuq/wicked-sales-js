@@ -7,9 +7,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'catalog', params: {} }
+      view: { name: 'catalog', params: {} },
+      cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +20,7 @@ export default class App extends React.Component {
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -26,18 +29,24 @@ export default class App extends React.Component {
     });
   }
 
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json())
+      .then(json => this.setState({ cart: json }));
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div className='container'>
-          <div className='row'><Header text={'$ Wicked Sales'}></Header></div>
+          <div className='row'><Header text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='row'><ProductList setView={this.setView}></ProductList></div>
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <div className='container'>
-          <div className='row'><Header text={'$ Wicked Sales'}></Header></div>
+          <div className='row'><Header text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params}></ProductDetails></div>
         </div>
       );
