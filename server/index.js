@@ -66,17 +66,59 @@ app.get('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const { productId } = req.body.productId;
-  if (!parseInt(productId, 10)) {
+  // const { productId } = req.body;
+  if (!parseInt(req.body.productId, 10)) {
     return res.status(400).json({
-      error: '"productId" must be a positive integer'
+      error: 'productId must be a positive integer'
     });
   }
-  const params = [productId];
+  const params = [req.body.productId];
   const sql = `
   select "price"
   from "products"
   where "productId" = $1;`;
+
+  db.query(sql, params)
+    .then(result => {
+      const price = result.rows[0];
+      // console.log('price:', price);
+      if (!price) {
+        throw new ClientError(`Cannot find price of product with productId: ${req.body.productId}`, 400);
+      }
+      const sql2 = `
+      insert into "carts" ("cartId", "createdAt")
+      values (default, default)
+      returning "cartId";
+      `;
+      return (db.query(sql2)
+        .then(answer => {
+          // console.log('answer:', answer, answer.rows[0]);
+          res.json({ cartId: answer.rows[0].cartId, price: price.price });
+          return ({ cartId: answer.rows[0].cartId, price: price.price });
+        }));
+    })
+    .then(result2 => {
+      console.log('result2: ', result2);
+      req.session.cartId = result2.cartId;
+      const sql3 = `
+      insert into "cartItems" ("cartId", "productId", "price")
+      values ($1, $2, $3)
+      returning "cartItemId";
+      `;
+      const params = [result2.cartId, parseInt(req.body.productId), result2.price];
+      console.log('params', params);
+      return (db.query(sql3, params)
+        .then(answer2 => {
+          console.log('answer2', result.rows[0]);
+          // res.json({ cartItemId: answer2.rows[0] });
+          // return ({ cartItemId: answer2.rows[0] });
+        }));
+
+    })
+    .then(result3 => {
+      console.log('result3:', result3);
+    })
+    .catch();
 
 });
 
