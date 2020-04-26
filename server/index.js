@@ -53,19 +53,29 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
-  // if(!req.session.cartId){
-  //   res.json([])
-  // }
-  const sql = `
-  select *
-  from "cartItems";
+  if (!req.session.cartId) {
+    res.json([]);
+  } else {
+    console.log('cartId does exist', req.session.cartId);
+    const params = [req.session.cartId];
+    const sql = `
+  select "c"."cartItemId",
+       "c"."price",
+       "p"."productId",
+       "p"."image",
+       "p"."name",
+       "p"."shortDescription"
+  from "cartItems" as "c"
+  join "products" as "p" using ("productId")
+ where "c"."cartId" = $1;
   `;
-  db.query(sql)
-    .then(result => {
-      const itemsArray = result.rows;
-      res.status(200).json(itemsArray);
-    })
-    .catch(err => next(err));
+    db.query(sql, params)
+      .then(result => {
+        const itemsArray = result.rows;
+        res.status(200).json(itemsArray);
+      })
+      .catch(err => next(err));
+  }
 });
 
 app.post('/api/cart', (req, res, next) => {
