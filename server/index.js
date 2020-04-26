@@ -85,6 +85,10 @@ app.post('/api/cart', (req, res, next) => {
       if (!price) {
         throw new ClientError(`Cannot find price of product with productId: ${req.body.productId}`, 400);
       }
+      if (req.session.cartId) {
+        console.log('I reused cartId: ', req.session.cartId);
+        return ({ cartId: req.session.cartId, price: price.price });
+      }
       const sql2 = `
       insert into "carts" ("cartId", "createdAt")
       values (default, default)
