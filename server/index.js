@@ -162,21 +162,25 @@ app.post('/api/orders', (req, res, next) => {
     res.status(400).json({
       error: 'No cart ID registered this session'
     });
+    return;
   }
   if (!req.body.name) {
     res.status(400).json({
       error: 'Name is a required field'
     });
+    return;
   }
   if (req.body.creditCard.length < 16) {
     res.status(400).json({
       error: 'Credit Card number must be at least 16 digits'
     });
+    return;
   }
   if (!req.body.shippingAddress) {
     res.status(400).json({
       error: 'Shipping address is a required field'
     });
+    return;
   }
 
   const params = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
