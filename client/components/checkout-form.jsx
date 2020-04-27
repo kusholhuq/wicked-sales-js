@@ -26,11 +26,25 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
+
+    let totalPrice = 0;
+    for (let i = 0; i < this.props.cartItems.length; i++) {
+      totalPrice += this.props.cartItems[i].price;
+    }
+    const priceString = totalPrice + '';
+    const priceArray = priceString.split('');
+    priceArray.splice(priceArray.length - 2, 0, '.');
+    priceArray.splice(0, 0, '$');
+    let result = '';
+    for (let i = 0; i < priceArray.length; i++) {
+      result += priceArray[i];
+    }
+
     return (
       <div className='container'>
         <h1>My Cart</h1>
-        <p>Order Total</p>
-        <form action="">
+        <p>Order Total: {result}</p>
+        <form onSubmit={() => { this.props.placeOrder(this.state); }}>
           <div className='form-group mt-2 mb-2'>
             <p>Name</p>
             <input type="text" className='form-control' id='name' onChange={this.handleName}/>
@@ -47,8 +61,8 @@ class CheckoutForm extends React.Component {
 
           </div>
           <div className='row d-flex justify-content-between mt-2 mb-2'>
-            <p>Continue Shopping</p>
-            <button className='btn btn-primary'>Checkout</button>
+            <p onClick={() => { this.props.setView('catalog', {}); }}>&lt; Continue Shopping</p>
+            <button type='submit' className='btn btn-primary'>Place Order</button>
           </div>
         </form>
 
