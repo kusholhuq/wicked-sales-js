@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +57,24 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  placeOrder(order) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    };
+    fetch('/api/orders', options)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          cart: [],
+          view: { name: 'catalog', params: {} }
+        });
+      });
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
@@ -75,6 +95,13 @@ export default class App extends React.Component {
         <div className='container'>
           <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
+        </div>
+      );
+    } else if (this.state.view.name === 'checkout') {
+      return (
+        <div className='container'>
+          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
         </div>
       );
     }

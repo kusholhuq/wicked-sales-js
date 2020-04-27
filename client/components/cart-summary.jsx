@@ -51,8 +51,9 @@ function CartSummary(props) {
           }
 
         </div>
-        <div className='row'>
+        <div className='row d-flex justify-content-between mt-2 mb-2'>
           <p className='font-weight-bold'>Item Total {result}</p>
+          <button onClick={() => { props.setView('checkout', {}); }} className='btn btn-primary'>Check Out</button>
         </div>
       </div>
 
