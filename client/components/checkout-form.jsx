@@ -57,7 +57,7 @@ class CheckoutForm extends React.Component {
           </div>
           <div className='form-group mt-2 mb-2'>
             <p>Shipping Address</p>
-            <textarea name="shippingAddress" id="shippingAddress" cols="30" rows="10" onChange={this.handleShipping}></textarea>
+            <textarea className='form-control' name="shippingAddress" id="shippingAddress" cols="30" rows="10" onChange={this.handleShipping}></textarea>
 
           </div>
           <div className='row d-flex justify-content-between mt-2 mb-2'>
