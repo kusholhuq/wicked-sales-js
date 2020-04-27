@@ -52,7 +52,7 @@ function CartSummary(props) {
 
         </div>
         <div className='row'>
-          <p className='bold'>Item Total {result}</p>
+          <p className='font-weight-bold'>Item Total {result}</p>
         </div>
       </div>
 
