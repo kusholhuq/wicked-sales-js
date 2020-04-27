@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -58,15 +59,22 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div className='container'>
-          <div className='row'><Header text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='row'><ProductList setView={this.setView}></ProductList></div>
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <div className='container'>
-          <div className='row'><Header text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
+        </div>
+      );
+    } else if (this.state.view.name === 'cart') {
+      return (
+        <div className='container'>
+          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
         </div>
       );
     }
