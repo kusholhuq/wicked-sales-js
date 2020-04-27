@@ -44,7 +44,7 @@ class CheckoutForm extends React.Component {
       <div className='container'>
         <h1>My Cart</h1>
         <p>Order Total: {result}</p>
-        <form onSubmit={() => { this.props.placeOrder(this.state); }}>
+        <form onSubmit={() => { this.props.placeOrder(this.state); event.preventDefault(); }}>
           <div className='form-group mt-2 mb-2'>
             <p>Name</p>
             <input type="text" className='form-control' id='name' onChange={this.handleName}/>
