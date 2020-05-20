@@ -18,16 +18,16 @@ function CartSummary(props) {
     return (
       <div className='container'>
         <div className='row'>
-          <p onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
+          <p className='pointer ml-2' onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
         </div>
-        <div className='row'>
+        <div className='row ml-2'>
           <h1>My Cart</h1>
         </div>
-        <div className='row'>
+        <div className='row ml-2'>
           Your cart is empty
         </div>
         <div className='row'>
-          <p className='bold'>Item Total $0.00</p>
+          <p className='font-weight-bold ml-2'>Item Total $0.00</p>
         </div>
       </div>
 
@@ -36,9 +36,9 @@ function CartSummary(props) {
     return (
       <div className='container'>
         <div className='row'>
-          <p onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
+          <p className='pointer ml-2' onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
         </div>
-        <div className='row'>
+        <div className='row ml-2'>
           <h1>My Cart</h1>
         </div>
         <div className='row'>
@@ -52,8 +52,8 @@ function CartSummary(props) {
 
         </div>
         <div className='row d-flex justify-content-between mt-2 mb-2'>
-          <p className='font-weight-bold'>Item Total {result}</p>
-          <button onClick={() => { props.setView('checkout', {}); }} className='btn btn-primary'>Check Out</button>
+          <p className='font-weight-bold ml-2'>Item Total {result}</p>
+          <button onClick={() => { props.setView('checkout', {}); }} className='btn btn-primary mr-2'>Check Out</button>
         </div>
       </div>
 

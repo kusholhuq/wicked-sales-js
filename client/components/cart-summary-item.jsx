@@ -11,7 +11,7 @@ function CartSummaryItem(props) {
   }
 
   return (
-    <div className='card mt-2 mb-2'>
+    <div className='card m-2'>
       <div className='card-body d-flex'>
         <img src={props.source} className='col-4 image-size'/>
         <div>

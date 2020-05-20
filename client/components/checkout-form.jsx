@@ -11,6 +11,7 @@ class CheckoutForm extends React.Component {
     this.handleName = this.handleName.bind(this);
     this.handleCredit = this.handleCredit.bind(this);
     this.handleShipping = this.handleShipping.bind(this);
+    this.isCheckoutButtonDisabled = this.isCheckoutButtonDisabled.bind(this);
   }
 
   handleName(event) {
@@ -23,6 +24,14 @@ class CheckoutForm extends React.Component {
 
   handleShipping(event) {
     this.setState({ shippingAddress: event.target.value });
+  }
+
+  isCheckoutButtonDisabled() {
+    if (this.state.name && this.state.shippingAddress && this.state.creditCard.length >= 16) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   render() {
@@ -61,8 +70,8 @@ class CheckoutForm extends React.Component {
 
           </div>
           <div className='row d-flex justify-content-between mt-2 mb-2'>
-            <p onClick={() => { this.props.setView('catalog', {}); }}>&lt; Continue Shopping</p>
-            <button type='submit' className='btn btn-primary'>Place Order</button>
+            <p className='ml-2 pointer' onClick={() => { this.props.setView('catalog', {}); }}>&lt; Continue Shopping</p>
+            <button disabled={this.isCheckoutButtonDisabled()} type='submit' className='btn btn-primary mr-2'>Place Order</button>
           </div>
         </form>
 
