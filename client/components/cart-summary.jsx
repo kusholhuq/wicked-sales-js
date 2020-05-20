@@ -18,7 +18,7 @@ function CartSummary(props) {
     return (
       <div className='container'>
         <div className='row'>
-          <p onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
+          <p className='pointer' onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
         </div>
         <div className='row'>
           <h1>My Cart</h1>
@@ -36,7 +36,7 @@ function CartSummary(props) {
     return (
       <div className='container'>
         <div className='row'>
-          <p onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
+          <p className='pointer' onClick={() => { props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
         </div>
         <div className='row'>
           <h1>My Cart</h1>

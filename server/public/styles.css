@@ -12,3 +12,15 @@
   height: 40vh;
 
 }
+.pointer:hover{
+  cursor: pointer;
+ }
+
+ .bigger:hover{
+   transform: scale(1.03);
+   transition: ease-in-out all .4s;
+   box-shadow: grey 0 0 5px;
+ }
+ .smaller{
+   transition: ease-in-out all .4s;
+ }
