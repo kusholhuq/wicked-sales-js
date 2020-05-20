@@ -5,7 +5,7 @@
 A full stack Node.js and React shopping cart app.
 
 ## Live Demo
-https://wicked-sales-js.kusholhuq.com/
+https://wicked-sales.kusholhuq.com/
 
 
 ## Technologies Used
