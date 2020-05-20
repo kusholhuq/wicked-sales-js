@@ -23,11 +23,11 @@ function CartSummary(props) {
         <div className='row ml-2'>
           <h1>My Cart</h1>
         </div>
-        <div className='row'>
+        <div className='row ml-2'>
           Your cart is empty
         </div>
         <div className='row'>
-          <p className='bold ml-2'>Item Total $0.00</p>
+          <p className='font-weight-bold ml-2'>Item Total $0.00</p>
         </div>
       </div>
 

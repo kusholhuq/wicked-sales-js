@@ -37,7 +37,7 @@ class ProductDetails extends React.Component {
         <div className='container'>
           <div className='row'>
             <div className='card'>
-              <p className='pointer' onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
+              <p className='pointer ml-2' onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
               <div className='card-body d-flex'>
                 <img src={this.state.product.image} className='col-5 image-size-detail' />
                 <div className='ml-2 col-5'>
