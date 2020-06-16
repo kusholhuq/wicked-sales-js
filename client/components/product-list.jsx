@@ -27,7 +27,7 @@ class ProductList extends React.Component {
   render() {
     return (
 
-      <div className='container'>
+      <div className='container mt-4'>
         <div className='row justify-content-around'>
           {
             this.state.products.map(product => {
