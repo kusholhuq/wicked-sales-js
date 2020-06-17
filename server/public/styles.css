@@ -67,3 +67,13 @@
   width:100%;
 }
 }
+
+.display-none {
+  display: none;
+}
+
+.display-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

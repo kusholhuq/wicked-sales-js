@@ -4,18 +4,21 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: { name: 'catalog', params: {} },
-      cart: []
+      cart: [],
+      acknowledged: false
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.hideDisclaimerModal = this.hideDisclaimerModal.bind(this);
   }
 
   componentDidMount() {
@@ -75,15 +78,21 @@ export default class App extends React.Component {
       });
   }
 
+  hideDisclaimerModal() {
+    this.setState({ acknowledged: true });
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
+
           <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='hero'></div>
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
+          <DisclaimerModal acknowledged={this.state.acknowledged} hideDisclaimerModal={this.hideDisclaimerModal} />
         </div>
       );
     } else if (this.state.view.name === 'details') {

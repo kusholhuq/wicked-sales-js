@@ -1,15 +1,12 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
-import DisclaimerModal from './disclaimer-modal';
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
-      acknowledged: false
+      products: []
     };
     this.getProducts = this.getProducts.bind(this);
-    this.hideDisclaimerModal = this.hideDisclaimerModal.bind(this);
   }
 
   componentDidMount() {
@@ -26,15 +23,10 @@ class ProductList extends React.Component {
 
   }
 
-  hideDisclaimerModal() {
-    this.setState({ acknowledged: true });
-  }
-
   render() {
     return (
 
       <div className='container mt-4'>
-        <DisclaimerModal acknowledged={this.state.acknowledged} hideDisclaimerModal={this.hideDisclaimerModal}/>
         <div className='row justify-content-around'>
           {
             this.state.products.map(product => {
