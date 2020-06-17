@@ -78,30 +78,39 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'catalog') {
       return (
-        <div className='container'>
-          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
-          <div className='row'><ProductList setView={this.setView}></ProductList></div>
+        <div>
+          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='hero'></div>
+          <div className='container'>
+            <div className='row'><ProductList setView={this.setView}></ProductList></div>
+          </div>
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div className='container'>
-          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
-          <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
+        <div>
+          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='container'>
+            <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
+          </div>
         </div>
       );
     } else if (this.state.view.name === 'cart') {
       return (
-        <div className='container'>
-          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
-          <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
+        <div>
+          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='container'>
+            <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
+          </div>
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
       return (
-        <div className='container'>
-          <div className='row'><Header setView={this.setView} text={'$ Wicked Sales'} cartItemCount={this.state.cart.length}></Header></div>
-          <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
+        <div>
+          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='container'>
+            <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
+          </div>
         </div>
       );
     }
