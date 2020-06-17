@@ -25,6 +25,17 @@
    transition: ease-in-out all .4s;
  }
 
+ .hero{
+
+  height: 72vh;
+  background-image:  url(/images/hero6.jpg);
+  /* linear-gradient(0.25turn, #00000070, #00000000), */
+  background-size: cover;
+  /* background-position: 50% 75%; */
+  position: relative;
+  user-select: none;
+ }
+
  /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait and Landscape */

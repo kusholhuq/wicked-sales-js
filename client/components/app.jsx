@@ -80,6 +80,7 @@ export default class App extends React.Component {
       return (
         <div>
           <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='hero'></div>
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
