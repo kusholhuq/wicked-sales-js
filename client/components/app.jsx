@@ -17,7 +17,6 @@ export default class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-    // this.hideDisclaimerModal = this.hideDisclaimerModal.bind(this);
   }
 
   componentDidMount() {
@@ -77,11 +76,6 @@ export default class App extends React.Component {
       });
   }
 
-  // hideDisclaimerModal() {
-  //   this.setState({ acknowledged: true });
-  //   event.preventDefault();
-  // }
-
   render() {
     if (this.state.view.name === 'catalog') {
       return (
@@ -92,7 +86,6 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
-          {/* <DisclaimerModal/> */}
         </div>
       );
     } else if (this.state.view.name === 'modal') {

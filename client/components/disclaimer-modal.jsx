@@ -16,8 +16,6 @@ class DisclaimerModal extends React.Component {
   }
 
   handleSubmit(event) {
-    // this.setState({ acknowledged: true });
-    // console.log(this.state);
     this.props.setView('catalog', {});
     event.preventDefault();
   }
