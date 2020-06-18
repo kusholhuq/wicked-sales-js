@@ -11,14 +11,13 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: { name: 'catalog', params: {} },
-      cart: [],
-      acknowledged: false
+      cart: []
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-    this.hideDisclaimerModal = this.hideDisclaimerModal.bind(this);
+    // this.hideDisclaimerModal = this.hideDisclaimerModal.bind(this);
   }
 
   componentDidMount() {
@@ -78,27 +77,28 @@ export default class App extends React.Component {
       });
   }
 
-  hideDisclaimerModal() {
-    this.setState({ acknowledged: true });
-  }
+  // hideDisclaimerModal() {
+  //   this.setState({ acknowledged: true });
+  //   event.preventDefault();
+  // }
 
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
 
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='hero'></div>
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
-          <DisclaimerModal acknowledged={this.state.acknowledged} hideDisclaimerModal={this.hideDisclaimerModal} />
+          <DisclaimerModal/>
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
           </div>
@@ -107,7 +107,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
           </div>
@@ -116,7 +116,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
           </div>
