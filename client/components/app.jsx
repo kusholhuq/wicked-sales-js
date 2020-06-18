@@ -4,12 +4,13 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'catalog', params: {} },
+      view: { name: 'modal', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);
@@ -79,17 +80,30 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='hero'></div>
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
         </div>
       );
+    } else if (this.state.view.name === 'modal') {
+      return (
+        <div>
+
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='hero'></div>
+          <div className='container'>
+            <div className='row'><ProductList setView={this.setView}></ProductList></div>
+          </div>
+          <DisclaimerModal setView={this.setView}/>
+        </div>
+      );
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
           </div>
@@ -98,7 +112,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
           </div>
@@ -107,7 +121,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <div className=''><Header setView={this.setView} text={'Aegis Art'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
             <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
           </div>
