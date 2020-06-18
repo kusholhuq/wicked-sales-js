@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'catalog', params: {} },
+      view: { name: 'modal', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);
@@ -92,7 +92,19 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
-          <DisclaimerModal/>
+          {/* <DisclaimerModal/> */}
+        </div>
+      );
+    } else if (this.state.view.name === 'modal') {
+      return (
+        <div>
+
+          <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
+          <div className='hero'></div>
+          <div className='container'>
+            <div className='row'><ProductList setView={this.setView}></ProductList></div>
+          </div>
+          <DisclaimerModal setView={this.setView}/>
         </div>
       );
     } else if (this.state.view.name === 'details') {
