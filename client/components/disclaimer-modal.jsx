@@ -4,8 +4,7 @@ class DisclaimerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: null,
-      acknowledged: false
+      checked: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
