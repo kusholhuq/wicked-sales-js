@@ -21,15 +21,9 @@ class DisclaimerModal extends React.Component {
   }
 
   render() {
-    let className = null;
-    if (this.state.acknowledged === false) {
-      className = 'display-modal';
-    } else {
-      className = 'display-none';
-    }
 
     return (
-      <div className={`${className} backdrop d-flex`}>
+      <div className='backdrop d-flex'>
         <div className='modal-contents m-auto bg-white border rounded mt-5 p-3'>
           <h2 className='text-center'>Welcome to METALOGY!</h2>
           <p>Please note that this website is a content management application
