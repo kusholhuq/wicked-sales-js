@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import DisclaimerModal from './disclaimer-modal';
+import Footer from './footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -86,6 +87,7 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
+          <Footer text={'METALOGY'}/>
         </div>
       );
     } else if (this.state.view.name === 'modal') {
@@ -98,6 +100,7 @@ export default class App extends React.Component {
             <div className='row'><ProductList setView={this.setView}></ProductList></div>
           </div>
           <DisclaimerModal setView={this.setView}/>
+          <Footer text={'METALOGY'}/>
         </div>
       );
     } else if (this.state.view.name === 'details') {
