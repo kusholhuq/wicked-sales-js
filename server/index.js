@@ -201,10 +201,9 @@ app.post('/api/orders', (req, res, next) => {
 app.delete('/api/cartItems/:productId', (req, res, next) => {
   const deleteSql = `
   delete from "cartItems"
-  where "cartId" = $1
-    and "productId" = $2
+  where "cartItemId" = $1
   `;
-  const params = [req.session.cartId, req.params.productId];
+  const params = [req.params.cartItemId];
   db.query(deleteSql, params)
     .then(result => res.status(200).json(result))
     .catch(err => next(err));
