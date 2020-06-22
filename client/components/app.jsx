@@ -59,6 +59,15 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  removeFromCart(cartItem) {
+    const options = {
+      method: 'DELETE'
+    };
+    fetch(`/api/cartItems/${cartItem}`, options)
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
+  }
+
   placeOrder(order) {
     const options = {
       method: 'POST',
