@@ -199,13 +199,26 @@ app.post('/api/orders', (req, res, next) => {
 });
 
 app.delete('/api/cartItems/:cartItemId', (req, res, next) => {
+  const cartItemId = Number(req.params.cartItemId);
+  if (isNaN(cartItemId) || !Number.isInteger(cartItemId) || cartItemId <= 0) {
+    return res.status(400).json({ error: 'cartItemId must be a positive integer.' });
+  } else if (!req.session.cartId) {
+    return res.status(400).json({ error: 'Missing cartId. Please add an item to cart.' });
+  }
   const deleteSql = `
   delete from "cartItems"
   where "cartItemId" = $1
+  returning *;
   `;
-  const params = [req.params.cartItemId];
+  const params = [cartItemId];
   db.query(deleteSql, params)
-    .then(result => res.status(200).json(result))
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(`There is no product with cartItemId ${cartItemId} in cart.`, 404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
     .catch(err => next(err));
 });
 

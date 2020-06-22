@@ -18,7 +18,11 @@ function CartSummaryItem(props) {
           <h5 className='card-title'>{props.name}</h5>
           <p className='text-grey'>{result}</p>
           <p className='card-text'>{props.text}</p>
-          <button type="button" className="btn btn-danger">Remove</button>
+          <button type="button" className="btn btn-danger" onClick={() => {
+            fetch(`/api/cartItems/${props.key}`, { method: 'DELETE' })
+              .then(res => console.log(res))
+              .catch(err => console.error(err));
+          }}>Remove</button>
         </div>
       </div>
 
