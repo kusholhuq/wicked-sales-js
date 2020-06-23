@@ -27,6 +27,10 @@ class CartSummary extends React.Component {
     });
   }
 
+  closeModal() {
+    this.setState({ showModal: false });
+  }
+
   render() {
     let totalPrice = 0;
     for (let i = 0; i < this.props.cartItems.length; i++) {
