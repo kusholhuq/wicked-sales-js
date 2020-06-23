@@ -18,6 +18,7 @@ export default class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +56,25 @@ export default class App extends React.Component {
         this.setState({
           cart: [...this.state.cart, json]
         });
+      })
+      .catch(err => console.error(err));
+  }
+
+  removeFromCart(cartItem) {
+    const options = {
+      method: 'DELETE'
+    };
+    fetch(`/api/cartItems/${cartItem}`, options)
+      .then(result => {
+        if (result.ok) {
+          const cart = this.state.cart.slice();
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].cartItemId === cartItem) {
+              cart.splice(i, 1);
+              this.setState({ cart: cart });
+            }
+          }
+        }
       })
       .catch(err => console.error(err));
   }
@@ -117,7 +137,7 @@ export default class App extends React.Component {
         <div>
           <div className=''><Header setView={this.setView} text={'METALOGY'} cartItemCount={this.state.cart.length}></Header></div>
           <div className='container'>
-            <div className='row'><CartSummary cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
+            <div className='row'><CartSummary removeFromCart={this.removeFromCart} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
           </div>
         </div>
       );

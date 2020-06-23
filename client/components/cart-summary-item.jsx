@@ -18,6 +18,9 @@ function CartSummaryItem(props) {
           <h5 className='card-title'>{props.name}</h5>
           <p className='text-grey'>{result}</p>
           <p className='card-text'>{props.text}</p>
+          <button type="button" className="btn btn-danger" onClick={() => {
+            props.removeFromCart(props.cartItemId);
+          }}>Remove</button>
         </div>
       </div>
 
