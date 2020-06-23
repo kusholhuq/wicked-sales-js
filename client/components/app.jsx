@@ -65,7 +65,17 @@ export default class App extends React.Component {
       method: 'DELETE'
     };
     fetch(`/api/cartItems/${cartItem}`, options)
-      .then(res => console.log(res))
+      .then(result => {
+        if (result.ok) {
+          const cart = this.state.cart.slice();
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].cartItemId === cartItem) {
+              cart.splice(i, 1);
+              this.setState({ cart: cart });
+            }
+          }
+        }
+      })
       .catch(err => console.error(err));
   }
 

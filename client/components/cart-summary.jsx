@@ -45,7 +45,7 @@ function CartSummary(props) {
           {
             props.cartItems.map(cartItem => {
               return (
-                <CartSummaryItem key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription}></CartSummaryItem>
+                <CartSummaryItem removeFromCart={props.removeFromCart} key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription} cartItemId={cartItem.cartItemId} ></CartSummaryItem>
               );
             })
           }

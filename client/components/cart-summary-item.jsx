@@ -19,9 +19,7 @@ function CartSummaryItem(props) {
           <p className='text-grey'>{result}</p>
           <p className='card-text'>{props.text}</p>
           <button type="button" className="btn btn-danger" onClick={() => {
-            fetch(`/api/cartItems/${props.key}`, { method: 'DELETE' })
-              .then(res => console.log(res))
-              .catch(err => console.error(err));
+            props.removeFromCart(props.cartItemId);
           }}>Remove</button>
         </div>
       </div>
