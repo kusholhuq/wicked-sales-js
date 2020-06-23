@@ -6,8 +6,25 @@ class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      removedItem: {
+        image: '',
+        title: '',
+        cartItemId: ''
+      },
       showModal: true
     };
+    this.getRemovedItemDetails = this.getRemovedItemDetails.bind(this);
+  }
+
+  getRemovedItemDetails(item) {
+    this.setState({
+      removedItem: {
+        image: item.source,
+        title: item.name,
+        cartItemId: item.cartItemId
+      },
+      showModal: true
+    });
   }
 
   render() {
