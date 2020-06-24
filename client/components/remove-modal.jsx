@@ -11,11 +11,11 @@ class RemoveModal extends React.Component {
   render() {
     return (
       <div className='backdrop d-flex'>
-        <div className='modal-contents m-auto bg-white border rounded mt-5 p-3'>
+        <div className='modal-contents m-auto bg-white border rounded  p-3 remove-modal'>
           <h3 className='text-center'>{this.props.removedItem.title}</h3>
-          <img className='ml-3 mt-2' src={`${this.props.removedItem.image}`} alt="image from props"/>
+          <img className=' mt-2' src={`${this.props.removedItem.image}`} alt="image from props"/>
           <p className='text-center mt-2'>Are you sure you want to remove this item from your cart?</p>
-          <div className='d-flex btn-group w-75 text-center justify-content-center'>
+          <div className='btn-group w-75'>
             <button className='btn btn-secondary' onClick={this.props.closeModal}>Cancel</button>
             <button className='btn btn-danger' onClick={() => {
               this.props.removeFromCart(this.props.removedItem.cartItemId);
