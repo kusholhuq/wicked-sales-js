@@ -94,3 +94,10 @@
 .fullscreen{
   height: 62vh;
 }
+
+.remove-modal{
+display: flex;
+justify-content: center;
+align-items:center;
+flex-direction: column;
+}
