@@ -130,6 +130,7 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></ProductDetails></div>
           </div>
+          <Footer text={'METALOGY'} />
         </div>
       );
     } else if (this.state.view.name === 'cart') {
@@ -139,6 +140,7 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><CartSummary removeFromCart={this.removeFromCart} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}></CartSummary></div>
           </div>
+          <Footer text={'METALOGY'} />
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
@@ -148,6 +150,7 @@ export default class App extends React.Component {
           <div className='container'>
             <div className='row'><CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} params={this.state.view.params}></CheckoutForm></div>
           </div>
+          <Footer text={'METALOGY'} />
         </div>
       );
     }
