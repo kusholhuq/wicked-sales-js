@@ -47,19 +47,19 @@ class CartSummary extends React.Component {
     }
     if (this.props.cartItems.length === 0) {
       return (
-        <div className='container'>
+        <div className='container fullscreen mt-5'>
           <div className='row'>
             <p className='pointer ml-2' onClick={() => { this.props.setView('catalog', {}); }}>&lt; Back to Catalog</p>
           </div>
-          <div className='row ml-2'>
+          {/* <div className='row ml-2'>
             <h1>My Cart</h1>
-          </div>
-          <div className='row ml-2'>
-          Your cart is empty
-          </div>
-          <div className='row'>
+          </div> */}
+          <h2 className='row ml-2'>
+          Your cart is empty!
+          </h2>
+          {/* <div className='row'>
             <p className='font-weight-bold ml-2'>Item Total $0.00</p>
-          </div>
+          </div> */}
         </div>
 
       );

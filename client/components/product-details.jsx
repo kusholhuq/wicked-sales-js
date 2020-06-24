@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
         result += priceArray[i];
       }
       return (
-        <div className='container'>
+        <div className='container mt-5'>
           <div className='row'>
             <div className='card'>
               <p className='pointer ml-2' onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
