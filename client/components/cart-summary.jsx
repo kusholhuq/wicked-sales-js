@@ -11,9 +11,10 @@ class CartSummary extends React.Component {
         title: '',
         cartItemId: ''
       },
-      showModal: true
+      showModal: false
     };
     this.getRemovedItemDetails = this.getRemovedItemDetails.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   getRemovedItemDetails(item) {
@@ -76,7 +77,7 @@ class CartSummary extends React.Component {
               {
                 this.props.cartItems.map(cartItem => {
                   return (
-                    <CartSummaryItem removeFromCart={this.props.removeFromCart} key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription} cartItemId={cartItem.cartItemId} ></CartSummaryItem>
+                    <CartSummaryItem getRemovedItemDetails={this.getRemovedItemDetails} removeFromCart={this.props.removeFromCart} key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription} cartItemId={cartItem.cartItemId} ></CartSummaryItem>
                   );
                 })
               }
@@ -88,7 +89,7 @@ class CartSummary extends React.Component {
             </div>
           </div>
 
-          <RemoveModal/>
+          <RemoveModal removedItem={this.state.removedItem} closeModal = {this.closeModal} removeFromCart={this.props.removeFromCart}/>
         </div>
       );
     } else {
@@ -104,7 +105,7 @@ class CartSummary extends React.Component {
             {
               this.props.cartItems.map(cartItem => {
                 return (
-                  <CartSummaryItem removeFromCart={this.props.removeFromCart} key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription} cartItemId={cartItem.cartItemId} ></CartSummaryItem>
+                  <CartSummaryItem getRemovedItemDetails={this.getRemovedItemDetails} removeFromCart={this.props.removeFromCart} key={cartItem.cartItemId} price={cartItem.price} source={cartItem.image} name={cartItem.name} text={cartItem.shortDescription} cartItemId={cartItem.cartItemId} ></CartSummaryItem>
                 );
               })
             }
