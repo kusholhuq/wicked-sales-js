@@ -123,3 +123,6 @@ transition: all ease-in 100ms;
   transition: all ease-in 100ms;
 
 }
+.custom-flex{
+  display: flex;
+}
