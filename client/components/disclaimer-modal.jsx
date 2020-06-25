@@ -23,7 +23,7 @@ class DisclaimerModal extends React.Component {
 
     return (
       <div className='backdrop d-flex'>
-        <div className='modal-contents m-auto bg-white border rounded mt-5 p-3'>
+        <div className='modal-contents m-auto bg-white rounded mt-5 p-3 '>
           <h2 className='text-center'>Welcome to METALOGY!</h2>
           <p>Please note that this website is a content management application
             created for the purpose of demonstration. Check the box below to acknowledge

@@ -101,3 +101,15 @@ justify-content: center;
 align-items:center;
 flex-direction: column;
 }
+.bg-black{
+  background-color: black;
+}
+.text-pink{
+  color:hotpink;
+}
+.bg-grey{
+  background-color: rgba(0,0,0,0.1);
+}
+.bg-pink{
+  background-color:hotpink;
+}
