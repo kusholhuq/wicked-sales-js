@@ -170,20 +170,21 @@ app.post('/api/orders', (req, res, next) => {
     });
     return;
   }
-  if (req.body.creditCard.length < 16) {
+  if (!req.body.creditCard.length) {
     res.status(400).json({
       error: 'Credit Card number must be at least 16 digits'
     });
     return;
   }
-  if (!req.body.shippingAddress) {
+  if (!req.body.address) {
     res.status(400).json({
       error: 'Shipping address is a required field'
     });
     return;
+
   }
 
-  const params = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  const params = [req.session.cartId, req.body.name, req.body.creditCard, req.body.address];
   const sql = `
   insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
   values ($1, $2, $3, $4)
