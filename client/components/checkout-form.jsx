@@ -105,7 +105,7 @@ class CheckoutForm extends React.Component {
     }
 
     return (
-      <div className='container'>
+      <div className='container col-10'>
         <h1>My Cart</h1>
         <h2 className='text-secondary'>Order Total: {result}</h2>
         <h4>Billing/Shipping</h4>
@@ -128,18 +128,114 @@ class CheckoutForm extends React.Component {
               <label className='m-0' htmlFor="city">City</label>
               <input required type="text" className='form-control mb-4' name='city' id='city' onChange={this.handleCity}/>
             </div>
-            <div></div>
-            <div></div>
+            <div className='col p-0 mx-3'>
+              <label htmlFor="state" className='m-0'>State</label>
+              <select
+                required
+                className="custom-select mb-4"
+                name="state"
+                id="state"
+                onChange={this.handleState}>
+                <option value=''>Select a state</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="IllinoisIndiana">IllinoisIndiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississippi">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="MontanaNebraska">MontanaNebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="PennsylvaniaRhode Island">PennsylvaniaRhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
+              </select>
+            </div>
+            <div className='col p-0'>
+              <label htmlFor="zip" className='m-0'>Zip Code</label>
+              <input type="number" required maxLength='5' minLength='5' className='form-control mb-4 col' name='zip' id='zip' onChange={this.handleZip}/>
+            </div>
           </div>
 
-          <div className='form-group mt-2 mb-2'>
-            <p>Credit Card</p>
-            <input type="number" className='form-control' id='creditCard' onChange={this.handleCredit}/>
+          <h4>Payment Method</h4>
+          <div className='custom-flex flex-wrap align-items-center justify-content-between border rounded px-4 py-3 mb-3 col'>
+            <div>
+              <input type="radio" required name='method' className='mr-2'/>
+              <label htmlFor="method" className='m-0'>Credit Card</label>
+            </div>
+            <div className='col-6 custom-flex justify-content-center align-item-center'>
+              <img src="/images/credit-cards.png" alt="credit cards" className='img-fluid'/>
+
+            </div>
 
           </div>
           <div className='form-group mt-2 mb-2'>
-            <p>Shipping Address</p>
-            <textarea className='form-control' name="shippingAddress" id="shippingAddress" cols="30" rows="10" onChange={this.handleShipping}></textarea>
+            <p>Card Number</p>
+            <input required minLength='16' maxLength='16' type="text" className='form-control' id='creditCard' onChange={this.handleCredit}/>
+          </div>
+
+          <div className='d-flex flex-wrap'>
+            <div className='d-flex flex-wrap col-sm-12 p-0'>
+              <label htmlFor="month" className='col-12 p-0'>Expiration Date</label>
+              <div className='col-6 pl-0'>
+                <select
+                  required
+                  className="custom-select mb-4"
+                  name="month"
+                  id="month"
+                  onChange={this.handleMonth}>
+                  <option value=""> Month </option>
+                  <option value="01"> 01 </option>
+                  <option value="02"> 02 </option>
+                  <option value="03"> 03 </option>
+                  <option value="04"> 04 </option>
+                  <option value="05"> 05 </option>
+                  <option value="06"> 06 </option>
+                  <option value="07"> 07 </option>
+                  <option value="08"> 08 </option>
+                  <option value="09"> 09 </option>
+                  <option value="10"> 10 </option>
+                  <option value="11"> 11 </option>
+                  <option value="12"> 12 </option>
+                </select>
+
+              </div>
+            </div>
 
           </div>
           <div className='row d-flex justify-content-between mt-2 mb-2'>
