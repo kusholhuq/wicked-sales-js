@@ -70,7 +70,7 @@ class CheckoutForm extends React.Component {
 
           </div>
           <div className='row d-flex justify-content-between mt-2 mb-2'>
-            <p className='ml-2 pointer' onClick={() => { this.props.setView('catalog', {}); }}>&lt; Continue Shopping</p>
+            <p className='ml-2 pointer cart' onClick={() => { this.props.setView('catalog', {}); }}><i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Continue Shopping</p>
             <button disabled={this.isCheckoutButtonDisabled()} type='submit' className='btn btn-primary mr-2'>Place Order</button>
           </div>
         </form>
