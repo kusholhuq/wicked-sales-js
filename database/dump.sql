@@ -258,6 +258,28 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 27	57	2	2595
 28	57	3	2900
 29	57	5	9900
+30	58	1	2999
+31	57	2	2595
+32	59	6	830
+33	60	1	2999
+34	61	1	2999
+35	62	1	2999
+36	62	2	2595
+37	63	2	2595
+38	64	1	2999
+39	64	6	830
+40	65	2	4400
+41	65	2	4400
+42	65	2	4400
+43	65	2	4400
+44	66	2	4400
+45	67	2	4400
+46	68	1	4400
+65	73	1	4400
+67	73	2	4400
+69	74	3	5000
+70	75	3	5000
+71	76	2	4400
 \.
 
 
@@ -323,6 +345,26 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 55	2020-04-26 02:02:06.60051-07
 56	2020-04-26 02:02:48.101217-07
 57	2020-04-26 12:47:06.20391-07
+58	2020-04-26 20:18:42.402355-07
+59	2020-04-26 22:30:35.804166-07
+60	2020-04-26 22:40:45.034326-07
+61	2020-04-27 11:27:42.262077-07
+62	2020-05-18 18:36:29.79277-07
+63	2020-05-18 18:47:44.944166-07
+64	2020-05-20 13:09:37.021947-07
+65	2020-06-16 19:02:02.755453-07
+66	2020-06-17 16:09:55.094611-07
+67	2020-06-17 16:10:53.239066-07
+68	2020-06-21 21:47:55.904014-07
+69	2020-06-21 22:25:40.905425-07
+70	2020-06-22 12:30:32.533795-07
+71	2020-06-22 16:35:07.903688-07
+72	2020-06-23 14:54:21.901983-07
+73	2020-06-24 14:38:29.196839-07
+74	2020-06-24 23:39:38.760607-07
+75	2020-06-25 12:34:08.067249-07
+76	2020-06-25 15:02:44.357476-07
+77	2020-06-25 15:54:14.667731-07
 \.
 
 
@@ -331,6 +373,16 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 --
 
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
+2	58	Kushol Huq	12345678910111213	111 Example Street	2020-04-26 20:18:51.056766-07
+3	57	kushol	12345678910111213	97 cool drive boulevard	2020-04-26 22:20:13.145892-07
+4	59	kusholhuq	12345678910111213	111 cool street	2020-04-26 22:31:06.653676-07
+5	60	kusholhuq	1234567890123455	11111 drdrdrd drdr	2020-04-26 22:41:06.034619-07
+6	61	fsdfdsfdsf	12312312312313213213123	1111 fdfsfds	2020-04-27 11:27:56.840982-07
+7	62	kusholhuq	1234567891012121314	97 cool street	2020-05-18 18:36:52.916075-07
+8	64	kusholhuq	1234567890123456	dfs	2020-05-20 15:28:06.483555-07
+9	66	fdsafdsfsd	1111111111111111111111111111	sfdsfs	2020-06-17 16:10:28.903246-07
+10	73	fdsfdsfdsfs	1111111111111111111111111111	dsfdsf	2020-06-24 23:38:15.180338-07
+11	75	Mohsinul Huq	1234567890123456	97 Promenade	2020-06-25 14:59:25.660411-07
 \.
 
 
@@ -339,12 +391,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+1	The Soul of Nibelheim	4400	/images/cloud.jpg	Black silhouette of the soul of Nibelheim	Cloud Strife is the main protagonist in Final Fantasy VII, Final Fantasy VII Remake, and Final Fantasy VII: Advent Children. He also appears in the spin-off games of the Compilation of Final Fantasy VII, including Dirge of Cerberus -Final Fantasy VII- and Crisis Core -Final Fantasy VII-, as a supporting character.
+2	Soul Of The Energy Wave	4400	/images/goku.jpg	Black silhouette of the energy wave unleashed by Goku. 	Goku the main protagonist and hero of the Dragon Ball manga series and animated television series created by Akira Toriyama. He is one of the survivors of the extinct Saiyan race. He was sent as a baby to planet Earth in order to destroy it. When he arrived he was a violent kid, due to his warrior nature. However, he suffered an accident which made him lose his memory. He became a kind and calm kid. Trained, he became a talented martial artist and worlds greatest defender.
+3	Soul Of The Red Plumber	5000	/images/mario.jpg	Black silhouette inspired by the Red Plumber, Mario. 	Mario is the main character and protagonist of the long-running and highly successful Mario franchise. He was created by Japanese video game designer Shigeru Miyamoto and serves as the main mascot of Nintendo. Mario made his first appearance as the protagonist of the arcade game Donkey Kong, released in 1981. Since Super Mario Bros., his trademark abilities have been his jumping and stomping powers, with which he defeats most of his enemies, and his ability to gain powers with a plethora of items, such as the Super Mushroom, the Fire Flower, and the Super Star.
+4	Soul Of The Chosen Demon	5500	/images/nezuko.jpg	Black silhouette of the chosen demon, Nezuko. 	Nezuko Kamado (竈門かまど禰ね豆ず子こ Kamado Nezuko?) is the younger sister of Tanjiro Kamado and one of the two remaining members of the Kamado family. Formerly human, she was attacked and turned into a Demon by Muzan Kibutsuji. She is one of the main protagonists of Demon Slayer: Kimetsu no Yaiba.
+5	Soul Of The Space Cowboy	5200	/images/cowboy.jpg	Black silhouette of the Space Cowboy, Spike. 	Spike Spiegel (スパイク・スピーゲル Supaiku Supīgeru?) is a former member of the Red Dragon Crime Syndicate, who left by faking his death after falling in love with a woman called Julia. He then became a bounty hunter and the partner of Jet Black, the captain of the Bebop. Spike and Jet pursued criminals across the populated planets and moons of the solar system. His ship was the Swordfish II.
+6	Soul Of The Waterbender	4600	/images/kitara.webp	Black silhouette of the Waterbender, Katara. 	Katara is a fifteen-year-old waterbender who, like her older brother Sokka, was born and raised in the Southern Water Tribe by her grandmother, Kanna, prior to the life of her mother being taken during a Fire Nation raid. Katara was the last waterbender in her tribe. She and her brother Sokka found an airbender named Aang who later is revealed as the Avatar. She and Sokka accompany him on his journey to master the remaining three elements: water, earth, and fire.
 \.
 
 
@@ -352,21 +404,21 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 29, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 73, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 57, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 77, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 1, false);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 11, true);
 
 
 --
