@@ -5,7 +5,16 @@ class CheckoutForm extends React.Component {
     super(props);
     this.state = {
       name: '',
+      address: '',
+      address2: '',
+      city: '',
+      state: '',
+      zip: null,
+      method: '',
       creditCard: null,
+      month: null,
+      year: null,
+      security: null,
       shippingAddress: ''
     };
     this.handleName = this.handleName.bind(this);
@@ -16,6 +25,42 @@ class CheckoutForm extends React.Component {
 
   handleName(event) {
     this.setState({ name: event.target.value });
+  }
+
+  handleAddress(event) {
+    this.setState({ address: event.target.value });
+  }
+
+  handleAddress2(event) {
+    this.setState({ address2: event.target.value });
+  }
+
+  handleCity(event) {
+    this.setState({ city: event.target.value });
+  }
+
+  handleState(event) {
+    this.setState({ state: event.target.value });
+  }
+
+  handleZip(event) {
+    this.setState({ zip: event.target.value });
+  }
+
+  handleMethod(event) {
+    this.setState({ method: event.target.value });
+  }
+
+  handleMonth(event) {
+    this.setState({ month: event.target.value });
+  }
+
+  handleYear(event) {
+    this.setState({ year: event.target.value });
+  }
+
+  handleSecurity(event) {
+    this.setState({ security: event.target.value });
   }
 
   handleCredit(event) {
