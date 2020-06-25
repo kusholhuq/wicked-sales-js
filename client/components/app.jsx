@@ -11,7 +11,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'checkout', params: {} },
+      view: { name: 'modal', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);
