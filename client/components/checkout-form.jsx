@@ -14,13 +14,13 @@ class CheckoutForm extends React.Component {
       creditCard: null,
       month: null,
       year: null,
-      security: null,
-      shippingAddress: ''
+      security: null
+      // shippingAddress: ''
     };
     this.handleName = this.handleName.bind(this);
     this.handleCredit = this.handleCredit.bind(this);
-    this.handleShipping = this.handleShipping.bind(this);
-    this.isCheckoutButtonDisabled = this.isCheckoutButtonDisabled.bind(this);
+    // this.handleShipping = this.handleShipping.bind(this);
+    // this.isCheckoutButtonDisabled = this.isCheckoutButtonDisabled.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
     this.handleAddress2 = this.handleAddress2.bind(this);
     this.handleCity = this.handleCity.bind(this);
@@ -81,13 +81,14 @@ class CheckoutForm extends React.Component {
     this.setState({ shippingAddress: event.target.value });
   }
 
-  isCheckoutButtonDisabled() {
-    if (this.state.name && this.state.shippingAddress && this.state.creditCard.length >= 16) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  // isCheckoutButtonDisabled() {
+  //   if (this.state.name && this.state.shippingAddress && this.state.creditCard.length >= 16) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+  // disabled = { this.isCheckoutButtonDisabled() }
 
   render() {
 
@@ -112,11 +113,11 @@ class CheckoutForm extends React.Component {
         <form onSubmit={() => { this.props.placeOrder(this.state); event.preventDefault(); }}>
           <div className='form-group mt-2 mb-2'>
             <p>First &amp; last name</p>
-            <input type="text" className='form-control' id='name' onChange={this.handleName}/>
+            <input required type="text" className='form-control' id='name' onChange={this.handleName}/>
           </div>
           <div className='form-group mt-2 mb-2'>
             <p>Address</p>
-            <input type="text" className='form-control' id='address' onChange={this.handleAddress} />
+            <input required type="text" className='form-control' id='address' onChange={this.handleAddress} />
           </div>
           <div className='form-group mt-2 mb-2'>
             <p>Address 2</p>
@@ -233,14 +234,47 @@ class CheckoutForm extends React.Component {
                   <option value="11"> 11 </option>
                   <option value="12"> 12 </option>
                 </select>
-
+              </div>
+              <div className="col-6 pl-0">
+                <select
+                  required
+                  className="custom-select mb-4"
+                  name="year"
+                  id="year"
+                  onChange={this.handleYear}>
+                  <option value=""> Year </option>
+                  <option value="2020"> 2020 </option>
+                  <option value="2021"> 2021 </option>
+                  <option value="2022"> 2022</option>
+                  <option value="2023"> 2023 </option>
+                  <option value="2024"> 2024 </option>
+                  <option value="2025"> 2025 </option>
+                  <option value="2026"> 2026 </option>
+                  <option value="2027"> 2027 </option>
+                  <option value="2028"> 2028 </option>
+                </select>
               </div>
             </div>
-
+            <div>
+              <label htmlFor="security">Security Code</label>
+              <input
+                required
+                type="text"
+                className="form-control mb-4"
+                id="security"
+                name="security"
+                onChange={this.handleSecurity} />
+            </div>
           </div>
-          <div className='row d-flex justify-content-between mt-2 mb-2'>
+          <div className="d-flex mt-4">
+            <input required className="mt-1" type="checkbox" id="agree" name="agree" />
+            <label className="m-0 ml-2" htmlFor="agree">
+              I acknowledge that this is a demo application, and the information above is not my genuine financial or personal information.
+            </label>
+          </div>
+          <div className='row d-flex justify-content-between mt-4 mb-2'>
             <p className='ml-2 pointer cart' onClick={() => { this.props.setView('catalog', {}); }}><i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Continue Shopping</p>
-            <button disabled={this.isCheckoutButtonDisabled()} type='submit' className='btn btn-primary mr-2'>Place Order</button>
+            <button type='submit' className='btn btn-primary mr-2'>Place Order</button>
           </div>
         </form>
 
