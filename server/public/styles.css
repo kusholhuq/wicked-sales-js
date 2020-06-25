@@ -106,6 +106,7 @@ flex-direction: column;
 }
 .text-pink{
   color:hotpink;
+  /* color:aquamarine; */
 }
 .bg-grey{
   background-color: rgba(0,0,0,0.1);
