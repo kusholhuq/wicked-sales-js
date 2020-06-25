@@ -21,6 +21,16 @@ class CheckoutForm extends React.Component {
     this.handleCredit = this.handleCredit.bind(this);
     this.handleShipping = this.handleShipping.bind(this);
     this.isCheckoutButtonDisabled = this.isCheckoutButtonDisabled.bind(this);
+    this.handleAddress = this.handleAddress.bind(this);
+    this.handleAddress2 = this.handleAddress2.bind(this);
+    this.handleCity = this.handleCity.bind(this);
+    this.handleState = this.handleState.bind(this);
+    this.handleZip = this.handleZip.bind(this);
+    this.handleMethod = this.handleMethod.bind(this);
+    this.handleMonth = this.handleMonth.bind(this);
+    this.handleYear = this.handleYear.bind(this);
+    this.handleSecurity = this.handleSecurity.bind(this);
+
   }
 
   handleName(event) {
@@ -97,13 +107,31 @@ class CheckoutForm extends React.Component {
     return (
       <div className='container'>
         <h1>My Cart</h1>
-        <p>Order Total: {result}</p>
+        <h2 className='text-secondary'>Order Total: {result}</h2>
+        <h4>Billing/Shipping</h4>
         <form onSubmit={() => { this.props.placeOrder(this.state); event.preventDefault(); }}>
           <div className='form-group mt-2 mb-2'>
-            <p>Name</p>
+            <p>First &amp; last name</p>
             <input type="text" className='form-control' id='name' onChange={this.handleName}/>
-
           </div>
+          <div className='form-group mt-2 mb-2'>
+            <p>Address</p>
+            <input type="text" className='form-control' id='address' onChange={this.handleAddress} />
+          </div>
+          <div className='form-group mt-2 mb-2'>
+            <p>Address 2</p>
+            <input type="text" className='form-control' id='address2' onChange={this.handleAddress2} />
+          </div>
+
+          <div className=' d-flex flex-wrap col-sm-12 p-0'>
+            <div className='col p-0'>
+              <label className='m-0' htmlFor="city">City</label>
+              <input required type="text" className='form-control mb-4' name='city' id='city' onChange={this.handleCity}/>
+            </div>
+            <div></div>
+            <div></div>
+          </div>
+
           <div className='form-group mt-2 mb-2'>
             <p>Credit Card</p>
             <input type="number" className='form-control' id='creditCard' onChange={this.handleCredit}/>
