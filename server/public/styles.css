@@ -90,3 +90,36 @@
   width: 22rem;
 
 }
+
+.fullscreen{
+  height: 62vh;
+}
+
+.remove-modal{
+display: flex;
+justify-content: center;
+align-items:center;
+flex-direction: column;
+}
+.bg-black{
+  background-color: black;
+}
+.text-pink{
+  color:hotpink;
+  /* color:aquamarine; */
+}
+.bg-grey{
+  background-color: rgba(0,0,0,0.1);
+}
+.bg-pink{
+  background-color:hotpink;
+}
+
+.cart{
+transition: all ease-in 100ms;
+}
+.cart:hover{
+  color:hotpink;
+  transition: all ease-in 100ms;
+
+}

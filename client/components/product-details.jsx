@@ -34,10 +34,10 @@ class ProductDetails extends React.Component {
         result += priceArray[i];
       }
       return (
-        <div className='container'>
+        <div className='container mt-5'>
           <div className='row'>
             <div className='card'>
-              <p className='pointer ml-2' onClick={ () => { this.props.setView('catalog', {}); }}>&lt; Back to catalog</p>
+              <p className='pointer ml-2 cart' onClick={() => { this.props.setView('catalog', {}); }}><i className="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to catalog</p>
               <div className='card-body d-flex'>
                 <img src={this.state.product.image} className='col-5 image-size-detail' />
                 <div className='ml-2 col-5'>
