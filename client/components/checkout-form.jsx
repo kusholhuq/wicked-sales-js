@@ -15,12 +15,9 @@ class CheckoutForm extends React.Component {
       month: null,
       year: null,
       security: null
-      // shippingAddress: ''
     };
     this.handleName = this.handleName.bind(this);
     this.handleCredit = this.handleCredit.bind(this);
-    // this.handleShipping = this.handleShipping.bind(this);
-    // this.isCheckoutButtonDisabled = this.isCheckoutButtonDisabled.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
     this.handleAddress2 = this.handleAddress2.bind(this);
     this.handleCity = this.handleCity.bind(this);
@@ -81,15 +78,6 @@ class CheckoutForm extends React.Component {
     this.setState({ shippingAddress: event.target.value });
   }
 
-  // isCheckoutButtonDisabled() {
-  //   if (this.state.name && this.state.shippingAddress && this.state.creditCard.length >= 16) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
-  // disabled = { this.isCheckoutButtonDisabled() }
-
   render() {
 
     let totalPrice = 0;
@@ -107,9 +95,9 @@ class CheckoutForm extends React.Component {
 
     return (
       <div className='container col-10'>
-        <h1>My Cart</h1>
+        <h1 className='mt-5 mb-3'>My Cart</h1>
         <h2 className='text-secondary'>Order Total: {result}</h2>
-        <h4>Billing/Shipping</h4>
+        <h4 className='mt-4 mb-2'>Billing/Shipping</h4>
         <form onSubmit={() => { this.props.placeOrder(this.state); event.preventDefault(); }}>
           <div className='form-group mt-2 mb-2'>
             <p>First &amp; last name</p>
